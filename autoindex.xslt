@@ -221,16 +221,17 @@
 		table#contents tr.separator td { padding: 10px 30px 10px 30px }
 		table#contents tr.separator td hr { display: none; }
 		table#contents tr td.actions ul { list-style-type: none; margin: 0px; padding: 0px; visibility: hidden; }
-		table#contents tr td.actions ul li { float: left; }
+		table#contents tr td.actions ul li { display: inline-block; }
 		table#contents tr:hover td.actions ul { visibility: visible; }
 		table#contents tr td.actions ul li a { display: inline; padding: 10px 10px 10px 10px !important; }
+		table#contents tr td.actions ul li:first-child a { padding-left: 15px !important; }
 		table#contents tr td.actions ul li a:hover[data-action='delete'] { color: #c90000 !important; }
-		body.nowebdav table#contents tr td.actions ul { display: none !important; }
+		body.nowebdav table#contents tr td.actions ul { display: block !important; }
 
 		nav#breadcrumbs { margin-bottom: 50px; display: flex; justify-content: center; align-items: center; }
 		nav#breadcrumbs ul { list-style: none; display: inline-block; margin: 0px; padding: 0px; }
 		nav#breadcrumbs ul .icon { font-size: 14px; }
-		nav#breadcrumbs ul li { float: left; }
+		nav#breadcrumbs ul li { display: inline-block;  }
 		nav#breadcrumbs ul li a { color: #FFF; display: block; background: #515151; text-decoration: none; position: relative; height: 40px; line-height: 40px; padding: 0 10px 0 5px; text-align: center; margin-right: 23px; }
 		nav#breadcrumbs ul li:nth-child(even) a { background-color: #525252; }
 		nav#breadcrumbs ul li:nth-child(even) a:before { border-color: #525252; border-left-color: transparent; }
@@ -297,12 +298,13 @@
 
 	          <xsl:for-each select="list/file">
 	            <tr class="file">
-	              <td class="icon"><a href="{.}" download="{.}"><i class="fa fa-file"></i></a></td>
-	              <td class="name"><a href="{.}" download="{.}"><xsl:value-of select="." /></a></td>
-	              <td class="size"><a href="{.}" download="{.}"><xsl:value-of select="./@size" /></a></td>
-	              <td class="mtime"><a href="{.}" download="{.}"><xsl:value-of select="./@mtime" /></a></td>
+	              <td class="icon"><a href="{.}"><i class="fa fa-file"></i></a></td>
+	              <td class="name"><a href="{.}"><xsl:value-of select="." /></a></td>
+	              <td class="size"><a href="{.}"><xsl:value-of select="./@size" /></a></td>
+	              <td class="mtime"><a href="{.}"><xsl:value-of select="./@mtime" /></a></td>
                       <td class="actions">
 			<ul>
+				<li><a href="{.}" download="{.}" class="fa fa-download"></a></li>
 				<li><a href="{.}" data-action="delete" class="fa fa-trash"></a></li>
 			</ul>
 		      </td>
